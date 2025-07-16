@@ -1,0 +1,27 @@
+class Solution {
+  public:
+    // a,b : the arrays
+    // Function to return a list containing the union of the two arrays.
+    vector<int> findUnion(vector<int> &a, vector<int> &b) {
+        // Your code here
+        set<int>s;
+        
+        for (int num:a){
+            s.insert(num);
+        }
+        
+        for(int num:b){
+            s.insert(num);
+        }
+        
+        vector<int>result(s.begin(), s.end());
+        return result;
+    
+        // return vector with correct order of elements
+    }
+};
+
+
+//here we will use set as set only allows unique values to be stored in it
+// time->o(n)
+//space-> o(1)

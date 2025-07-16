@@ -1,0 +1,18 @@
+class Solution {
+public:
+    void rotate(vector<int>& nums, int k) {
+        int n=nums.size();
+        k=k%n;
+
+        reverse(nums.begin(), nums.end());
+
+        reverse(nums.begin(), nums.begin()+k);
+
+        reverse(nums.begin()+k, nums.end());
+        
+    }
+};
+
+//we will simply reverse the order of the arrays here
+//time-> o(n)
+// space-> o(1)
