@@ -1,0 +1,27 @@
+class Solution {
+  public:
+    int maxSum(vector<int>& arr) {
+        int n = arr.size();
+        int result = INT_MIN;
+
+        // Loop through all subarrays of size >= 2
+        for (int i = 0; i < n; i++) {
+            int min1 = INT_MAX, min2 = INT_MAX;
+
+            for (int j = i; j < n; j++) {
+                if (arr[j] < min1) {
+                    min2 = min1;
+                    min1 = arr[j];
+                } else if (arr[j] < min2) {
+                    min2 = arr[j];
+                }
+
+                if (j - i + 1 >= 2) {
+                    result = max(result, min1 + min2);
+                }
+            }
+        }
+
+        return result;
+    }
+};
