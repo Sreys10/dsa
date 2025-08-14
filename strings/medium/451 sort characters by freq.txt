@@ -1,0 +1,43 @@
+class Solution {
+public:
+    string frequencySort(string s) {
+        //map char to their freqeuncies
+        unordered_map<char, int>freq;  //here we will be using the unordered map because map stores char accord to their alphabeticall order
+
+        for(int i=0; i<s.size(); i++){
+            freq[s[i]]++;
+        }
+
+        //sort the string
+        sort(s.begin(), s.end(), [&](char a, char b) {
+            if (freq[a] == freq[b])
+                return a < b; // optional: sort alphabetically if same freq
+            return freq[a] > freq[b]; // higher freq first
+        });
+
+        return s;
+    }
+};
+
+
+//solution using heap/priority_queue
+
+class Solution {
+public:
+    string frequencySort(string s) {
+      
+        unordered_map<char,int>mpp;
+        priority_queue<pair<int,char>>heap;
+        for(auto ch:s) mpp[ch]++;
+        for(auto [ch,freq]:mpp){
+            heap.push({freq,ch});
+        }
+        string result;
+        while(!heap.empty()){
+            for(int i=0;i<heap.top().first;i++) result+=heap.top().second;
+            heap.pop();
+        }
+        return result;
+        
+    }
+};
